@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Titanic Data Cleaning and EDA</title>
+</head>
+<body>
+	<h1>Titanic Data Cleaning and EDA</h1>
+	<p>Importing necessary libraries...</p>
+	<pre>
+import pandas as pd
+import matplotlib.pyplot as plt
+	</pre>
+	<p>Loading the Titanic dataset...</p>
+	<pre>
+data = pd.read_csv('titanic.csv')
+	</pre>
+	<p>Viewing the first few rows of the dataset...</p>
+	<pre>
+print(data.head())
+	</pre>
+	<p>Checking for missing values...</p>
+	<pre>
+print(data.isnull().sum())
+	</pre>
+	<p>Cleaning the data (handling missing values, encoding categorical variables, etc.)...</p>
+	<pre>
+# Handle missing values
+data.fillna(data.mean(), inplace=True)
+
+# Encode categorical variables
+data['Sex'] = data['Sex'].map({'male': 0, 'female': 1})
+	</pre>
+	<p>Performing EDA (exploratory data analysis)...</p>
+	<pre>
+# Visualize age distribution
+plt.hist(data['Age'], bins=20)
+plt.title('Age Distribution')
+plt.show()
+
+# Visualize survival rate by sex
+plt.bar(data['Sex'], data['Survived'])
+plt.title('Survival Rate by Sex')
+plt.show()
+	</pre>
+</body>
+</html>
+
+
